@@ -6,6 +6,13 @@ const result = ProductModel.create(payload)
 return result
 }
 
+const getAllProductsFromDb = async () => {
+    const result = await ProductModel.find()
+      
+    return result;
+  };
+
 export const productsServices = {
-    crateBookingInDb
+    crateBookingInDb,
+    getAllProductsFromDb
 }
