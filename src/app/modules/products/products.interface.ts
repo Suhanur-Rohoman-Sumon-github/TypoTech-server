@@ -1,14 +1,18 @@
-type ratings = {
-    name:string ;
-    image:string ;
-    comment:string ;
-}
+export type TRatings = {
+  name: string;
+  image: string;
+  comment: string;
+  rating: number;
+};
 
 export type TProducts = {
-    image:string ;
-    title:string ;
-    brand:string ;
-    quantity:number ;
-    price : number ;
-    ratings:ratings[];
-}
+  productsId: number;
+  image: string;
+  title: string;
+  brand: string;
+  quantity: number;
+  price: number;
+  ratings: TRatings[];
+  descriptions: string;
+  policy: string;
+};
