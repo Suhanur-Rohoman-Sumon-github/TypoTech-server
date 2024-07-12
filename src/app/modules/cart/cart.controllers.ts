@@ -46,9 +46,9 @@ const getUserId = catchAsync(async (req, res) => {
       data: result,
     });
   });
-const deleteProducts = catchAsync(async (req, res) => {
+const deleteCartProducts = catchAsync(async (req, res) => {
 
-    const result = await cartServices.getUserIdFromDb(req.params.id as string);
+    const result = await cartServices.deleteCardProductsFromDb(req.params.id as string);
 
   
     sendResponse(res, {
@@ -65,5 +65,5 @@ const deleteProducts = catchAsync(async (req, res) => {
     getAllCartsFromDb,
     getSinglePersonCats,
     getUserId,
-    deleteProducts
+    deleteCartProducts
   }

@@ -1,3 +1,4 @@
+import mongoose, { Types } from "mongoose";
 import { TCart } from "./cart.interface";
 import { CartModel } from "./cart.model";
 
@@ -50,11 +51,16 @@ const createProductsCartIntoDb = async (payload: TCart) => {
     const result = await CartModel.findOne().select('userId').sort({ _id: -1 });
     return result;
   }
+  const deleteCardProductsFromDb = async (id:string) =>{
+    const result = await CartModel.deleteOne(  {_id :new mongoose.Types.ObjectId(id)});
+    return result;
+  }
 
 
   export const cartServices = {
     createProductsCartIntoDb,
     getCardsFromDb,
     getSinglePersonCatsFromDb,
-    getUserIdFromDb
+    getUserIdFromDb,
+    deleteCardProductsFromDb
   }
