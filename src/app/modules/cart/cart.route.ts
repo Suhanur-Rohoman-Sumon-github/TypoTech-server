@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.post('/', cartControllers.createProductsCart);
 router.get('/', cartControllers.getAllCartsFromDb);
+
+router.get('/id', cartControllers.getUserId);
+router.delete('/:id', cartControllers.deleteCartProducts);
 router.get('/:userId', cartControllers.getSinglePersonCats);
-router.get('/' ,cartControllers.getUserId)
-router.delete('/:id' ,cartControllers.deleteCartProducts)
- 
 
 export const cartRoute = router;

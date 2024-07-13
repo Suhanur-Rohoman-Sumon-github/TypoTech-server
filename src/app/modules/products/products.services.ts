@@ -1,3 +1,7 @@
+
+
+import QueryBuilder from '../../builder/QueryBuilder';
+import { ProductsSearchableFields } from './products.const';
 import { TProducts } from './products.interface';
 import { ProductModel } from './products.model';
 
@@ -6,8 +10,15 @@ const crateBookingInDb = async (payload: TProducts) => {
   return result;
 };
 
-const getAllProductsFromDb = async () => {
-  const result = await ProductModel.find();
+const getAllProductsFromDb = async (query: Record<string, unknown>) => {
+  const ProductsQuery = new QueryBuilder(ProductModel.find(), query)
+    .search(ProductsSearchableFields)
+    .filter()
+    .sort()
+    .fields()
+    .paginate();
+
+  const result = await ProductsQuery.modelQuery;
 
   return result;
 };
