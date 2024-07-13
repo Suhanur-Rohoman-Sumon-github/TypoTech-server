@@ -17,33 +17,26 @@ const ratingsSchema = new Schema<TRatings>(
 
 const productsSchema = new Schema<TProducts>(
   {
-    productsId: { type: Number, required: true },
+    productId: { type: Number, default:1 , unique: true },
     image: { type: String, required: true },
     title: { type: String, required: true },
     brand: { type: String, required: true },
     price: { type: Number, required: true },
     quantity: { type: Number, required: true },
     ratings: [ratingsSchema],
-    descriptions: { type: String, required: true },
+    description: { type: String, required: true },
     policy: { type: String, required: true },
+    status: { type: String, enum: ['draft', 'active', 'archived'], default: 'draft' },
+    category: String,
+    tags: [String],
+    featured: { type: Boolean, default: false },
+    
   },
   {
     timestamps: true,
   },
 );
 
-productsSchema.pre('save', async function (next) {
-  const products = this;
-  const isProductsExists = await ProductModel.findOne({
-    productsId: products.productsId,
-  });
 
-  if (isProductsExists) {
-    throw new AppError(
-      httpStatus.INTERNAL_SERVER_ERROR,
-      'products already exists',
-    );
-  }
-});
 
-export const ProductModel = model<TProducts>('product', productsSchema);
+export const ProductModel = model<TProducts>('Product', productsSchema);

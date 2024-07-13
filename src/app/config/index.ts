@@ -11,4 +11,5 @@ export default {
   bcrypt_salt_round: process.env.bcrypt_salt_round,
   default_password: process.env.default_password,
   access_secret_key: process.env.Secret_Access_Key,
+  stripe_access_key : process.env.STRIPE_SECRET_KEY
 };

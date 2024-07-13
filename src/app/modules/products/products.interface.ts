@@ -3,16 +3,23 @@ export type TRatings = {
   image: string;
   comment: string;
   rating: number;
-};
+}
 
-export type TProducts = {
-  productsId: number;
+// Define the Products interface
+export type TProducts  = {
+  productId: number;
   image: string;
   title: string;
   brand: string;
   quantity: number;
   price: number;
   ratings: TRatings[];
-  descriptions: string;
+  description: string;
   policy: string;
-};
+  status?: string;
+  category?: string;
+  tags?: string[];
+  featured?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
